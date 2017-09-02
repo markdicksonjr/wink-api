@@ -1,0 +1,30 @@
+{
+  "name": "wink-api",
+  "version": "0.1.0",
+  "description": "The Wink API connects Wink devices to users, apps, each other, and the wider web.  Targets the v2 API",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && jasmine",
+    "postinstall": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://markdicksonjr@github.com/markdicksonjr/wink-api.git"
+  },
+  "author": "Mark Dickson Jr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markdicksonjr/wink-api/issues"
+  },
+  "homepage": "https://github.com/markdicksonjr/wink-api#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.54",
+    "@types/node": "^8.0.26",
+    "@types/request": "^2.0.3",
+    "jasmine": "^2.8.0",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
