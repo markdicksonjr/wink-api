@@ -76,4 +76,21 @@ declare module WinkAPI {
         subscribe_key: string;
         key: string;
     }
+
+    export interface IUser {
+        device_id: string;
+        user_id: string;
+        email: string;
+        permissions: string[];
+    }
+
+    export interface IAuthenticatedRequestParameters {
+        host: "https://api.wink.com" | string;
+        access_token: string
+    }
+
+    export interface IObjectIdRequestParameters extends IAuthenticatedRequestParameters {
+        object_id: string;
+        object_type: string;
+    }
 }

@@ -2,13 +2,13 @@ import * as request from 'request';
 
 export class GetDevice {
 
-    public static get(host: string, access_token: string, object_id: string, object_type: string): Promise<WinkAPI.IDevice> {
+    public static get(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IDevice> {
         return new Promise<WinkAPI.IDevice>((resolve, reject) => {
             request.get({
-                url: host + '/' + object_type + 's/' + object_id,
+                url: params.host + '/' + params.object_type + 's/' + params.object_id,
                 json: {},
                 headers: {
-                    Authorization: 'Bearer ' + access_token
+                    Authorization: 'Bearer ' + params.access_token
                 }
             }, (error, response, body) => {
                 if(error) {

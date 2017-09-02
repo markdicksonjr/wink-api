@@ -2,13 +2,13 @@ import * as request from 'request';
 
 export class Devices {
 
-    public static list(host: string, access_token: string): Promise<WinkAPI.IUserDevicesResponse> {
+    public static list(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserDevicesResponse> {
         return new Promise<WinkAPI.IUserDevicesResponse>((resolve, reject) => {
             request.get({
-                url: host + '/users/me/wink_devices',
+                url: auth.host + '/users/me/wink_devices',
                 json: {},
                 headers: {
-                    Authorization: 'Bearer ' + access_token
+                    Authorization: 'Bearer ' + auth.access_token
                 }
             }, (error, response, body) => {
                 if (error) {
