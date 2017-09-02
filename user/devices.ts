@@ -2,7 +2,7 @@ import * as request from 'request';
 
 export class Devices {
 
-    public static list(host: string, access_token: string) {
+    public static list(host: string, access_token: string): Promise<WinkAPI.IUserDevicesResponse> {
         return new Promise<WinkAPI.IUserDevicesResponse>((resolve, reject) => {
             request.get({
                 url: host + '/users/me/wink_devices',

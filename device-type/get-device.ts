@@ -1,14 +1,12 @@
 import * as request from 'request';
 
-export class SetDesiredState {
+export class GetDevice {
 
-    public static set(host: string, access_token: string, object_id: string, object_type: string, state: any): Promise<void> {
-        return new Promise<void>((resolve, reject) => {
-            request.put({
-                url: host + '/' + object_type + 's/' + object_id + '/desired_state',
-                json: {
-                    desired_state: state
-                },
+    public static get(host: string, access_token: string, object_id: string, object_type: string): Promise<WinkAPI.IDevice> {
+        return new Promise<WinkAPI.IDevice>((resolve, reject) => {
+            request.get({
+                url: host + '/' + object_type + 's/' + object_id,
+                json: {},
                 headers: {
                     Authorization: 'Bearer ' + access_token
                 }
@@ -21,7 +19,7 @@ export class SetDesiredState {
                     return reject('non-200 status code received: ' + response.statusCode);
                 }
 
-                resolve();
+                resolve(body);
             });
         });
     }

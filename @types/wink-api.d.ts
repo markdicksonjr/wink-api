@@ -12,8 +12,17 @@ declare module WinkAPI {
         token_endpoint: string;
     }
 
-    export interface IUserDevicesResponse {
-        data: IDevices[];
+    export interface IResponse {
+        errors?: string[];
+        pagination?: any;
+    }
+
+    export interface IUserDevicesResponse extends IResponse {
+        data: IDevice[];
+    }
+
+    export interface IUserDeviceResponse extends IResponse {
+        data: IDevice;
     }
 
     export type TObjectType =
@@ -29,7 +38,7 @@ declare module WinkAPI {
         "sensor_pod" |
         string;
 
-    export interface IDevices {
+    export interface IDevice {
         object_type: TObjectType;
         object_id: string;
         uuid: string;
