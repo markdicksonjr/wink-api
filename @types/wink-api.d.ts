@@ -16,8 +16,21 @@ declare module WinkAPI {
         data: IDevices[];
     }
 
+    export type TObjectType =
+        "binary_switch" |
+        "door_bell" |
+        "lock" |
+        "garage_door" |
+        "light_bulb" |
+        "hub" |
+        "gang" |
+        "thermostat" |
+        "button" |
+        "sensor_pod" |
+        string;
+
     export interface IDevices {
-        object_type: string;
+        object_type: TObjectType;
         object_id: string;
         uuid: string;
         icon_id: string;
