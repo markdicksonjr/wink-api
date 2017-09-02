@@ -1,14 +1,16 @@
 import * as request from 'request';
+import {ObjectTypeUtil} from "./object-type-util";
 
-export class ShareDevice {
+export class GetDeviceUsers {
 
-    public static get(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<WinkAPI.IUser[]> {
+    public static get(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IUser[]> {
         return new Promise<WinkAPI.IUser[]>((resolve, reject) => {
-            request.post({
-                url: params.host + '/' + params.object_type + 's/' + params.object_id + '/users',
-                json: {
-                    email: email
-                },
+            request.get({
+                url: params.host +
+                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                '/' + params.object_id +
+                '/users',
+                json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
                 }

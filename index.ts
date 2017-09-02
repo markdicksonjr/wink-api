@@ -1,2 +1,2 @@
-export * from './device-type';
+export * from './object-type';
 export * from './user';

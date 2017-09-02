@@ -36,6 +36,7 @@ declare module WinkAPI {
         "thermostat" |
         "button" |
         "sensor_pod" |
+        "shade" |
         string;
 
     export interface IDevice {

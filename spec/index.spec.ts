@@ -1,8 +1,8 @@
 import {Devices, SetDesiredState} from "../index";
-import {GetDevice} from "../device-type/get-device";
-import {GetDeviceUsers} from "../device-type/get-device-users";
-import {ShareDevice} from "../device-type/share-device";
-import {UnshareDevice} from "../device-type/unshare-device";
+import {GetDevice} from "../object-type/get-device";
+import {GetDeviceUsers} from "../object-type/get-device-users";
+import {ShareDevice} from "../object-type/share-device";
+import {UnshareDevice} from "../object-type/unshare-device";
 
 describe('Module index', () => {
 

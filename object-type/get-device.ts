@@ -1,11 +1,14 @@
 import * as request from 'request';
+import {ObjectTypeUtil} from "./object-type-util";
 
-export class GetDeviceUsers {
+export class GetDevice {
 
-    public static get(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IUser[]> {
-        return new Promise<WinkAPI.IUser[]>((resolve, reject) => {
+    public static get(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IDevice> {
+        return new Promise<WinkAPI.IDevice>((resolve, reject) => {
             request.get({
-                url: params.host + '/' + params.object_type + 's/' + params.object_id + '/users',
+                url: params.host +
+                    '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                    '/' + params.object_id,
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
