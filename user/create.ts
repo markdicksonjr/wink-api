@@ -1,30 +1,26 @@
 import * as request from 'request';
-import {ObjectTypeUtil} from "./object-type-util";
 
-export class ShareDevice {
+export class CreateUser {
 
-    public static execute(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<WinkAPI.IDeviceUser[]> {
-        return new Promise<WinkAPI.IDeviceUser[]>((resolve, reject) => {
+    public static execute(auth: WinkAPI.ICreateUserRequestParameters): Promise<WinkAPI.IUserResponse> {
+        return new Promise<WinkAPI.IUserResponse>((resolve, reject) => {
             request.post({
-                url: params.host +
-                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
-                '/' + params.object_id +
-                '/users',
+                url: auth.host + '/users',
                 json: {
-                    email: email
+
                 },
                 headers: {
-                    Authorization: 'Bearer ' + params.access_token
+                    Authorization: 'Bearer ' + auth.access_token
                 }
             }, (error, response, body) => {
-                if(error) {
+                if (error) {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error
                     });
                 }
 
-                if(response.statusCode !== 200) {
+                if (response.statusCode !== 200) {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error

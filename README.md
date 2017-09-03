@@ -23,9 +23,12 @@ Your app should get the access token via OAuth.  More details are at http://docs
 Get the devices for a user:
 
 ```typescript
-import {Devices} from "wink-api";
+import {GetDevices} from "wink-api";
 
-Devices.list('https://api.wink.com', access_token).then((devicesResponse: WinkAPI.IUserDevicesResponse) => {
+GetDevices.execute({
+    host: 'https://api.wink.com',
+    access_token: access_token
+}).then((devices) => {
     // do something
 }).catch((err) => {
     // error handling 

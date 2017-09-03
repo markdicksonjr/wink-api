@@ -1,5 +1,6 @@
 import {
     ActivateScene,
+    CreateUser,
     GetDevices,
     GetDevice,
     GetDeviceUsers,
@@ -12,7 +13,8 @@ import {
     ShareDevice,
     UnshareDevice,
     UpdateGroup,
-    UpdateGroupState
+    UpdateGroupState,
+    UpdateUser
 } from "../index";
 
 describe('Module index', () => {
@@ -20,6 +22,8 @@ describe('Module index', () => {
     it('should expose the expected modules', () => {
         expect(ActivateScene).not.toBeFalsy();
         expect(ActivateScene.execute).not.toBeFalsy();
+        expect(CreateUser).not.toBeFalsy();
+        expect(CreateUser.execute).not.toBeFalsy();
         expect(GetDevices).not.toBeFalsy();
         expect(GetDevices.execute).not.toBeFalsy();
         expect(SetDesiredState).not.toBeFalsy();
@@ -45,5 +49,7 @@ describe('Module index', () => {
         expect(UpdateGroup).not.toBeFalsy();
         expect(UpdateGroup.execute).not.toBeFalsy();
         expect(UpdateGroupState.execute).not.toBeFalsy();
+        expect(UpdateUser).not.toBeFalsy();
+        expect(UpdateUser.execute).not.toBeFalsy();
     });
 });

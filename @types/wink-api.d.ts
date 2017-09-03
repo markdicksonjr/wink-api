@@ -10,6 +10,7 @@ declare module WinkAPI {
         access_token: string;
         refresh_token: string;
         token_endpoint: string;
+        token_type: string;
     }
 
     export interface IResponse {
@@ -52,6 +53,10 @@ declare module WinkAPI {
 
     export interface IUserRobotsResponse extends IResponse {
         data: IRobot[];
+    }
+
+    export interface IUserResponse extends IResponse {
+        data: IUser;
     }
 
     export interface IGroup {
@@ -148,7 +153,7 @@ declare module WinkAPI {
         key: string;
     }
 
-    export interface IUser {
+    export interface IDeviceUser {
         device_id: string;
         user_id: string;
         email: string;
@@ -164,6 +169,18 @@ declare module WinkAPI {
         restrictions: any[]; // TODO: expand
         effects: any[]; // TODO: expand
         last_reading: any; // TODO: expand
+    }
+
+    export interface IUser {
+        user_id: string;
+        first_name: string;
+        last_name: string;
+        email: string;
+        oauth2: ITokenResponseParameters,
+        locale: string;
+        units: any, // TODO: expand
+        tos_accepted: boolean;
+        confirmed: boolean;
     }
 
     export interface IAuthenticatedRequestParameters {
@@ -182,5 +199,19 @@ declare module WinkAPI {
 
     export interface ISceneIdRequestParameters extends IAuthenticatedRequestParameters {
         scene_id: string;
+    }
+
+    export interface ICreateUserRequestParameters extends IAuthenticatedRequestParameters {
+        client_id: string;
+        client_secret: string;
+        email: string;
+        first_name: string;
+        last_name: string;
+        locale: string; // e.g. "en_us",
+        new_password: string;
+    }
+
+    export interface IUserRequestParameters extends IAuthenticatedRequestParameters {
+        user_id: string;
     }
 }
