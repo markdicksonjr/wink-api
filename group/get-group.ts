@@ -2,7 +2,7 @@ import * as request from 'request';
 
 export class GetGroup {
 
-    public static get(params: WinkAPI.IGroupIdRequestParameters): Promise<WinkAPI.IUserGroupResponse> {
+    public static execute(params: WinkAPI.IGroupIdRequestParameters): Promise<WinkAPI.IUserGroupResponse> {
         return new Promise<WinkAPI.IUserGroupResponse>((resolve, reject) => {
             request.get({
                 url: params.host +

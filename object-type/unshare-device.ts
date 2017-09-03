@@ -3,7 +3,7 @@ import {ObjectTypeUtil} from "./object-type-util";
 
 export class UnshareDevice {
 
-    public static get(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<void> {
+    public static execute(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             request.delete({
                 url: params.host +

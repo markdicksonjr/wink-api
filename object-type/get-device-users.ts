@@ -3,7 +3,7 @@ import {ObjectTypeUtil} from "./object-type-util";
 
 export class GetDeviceUsers {
 
-    public static get(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IUser[]> {
+    public static execute(params: WinkAPI.IObjectIdRequestParameters): Promise<WinkAPI.IUser[]> {
         return new Promise<WinkAPI.IUser[]>((resolve, reject) => {
             request.get({
                 url: params.host +

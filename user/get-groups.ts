@@ -1,8 +1,8 @@
 import * as request from 'request';
 
-export class Groups {
+export class GetGroups {
 
-    public static list(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserGroupsResponse> {
+    public static execute(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserGroupsResponse> {
         return new Promise<WinkAPI.IUserGroupsResponse>((resolve, reject) => {
             request.get({
                 url: auth.host + '/users/me/groups',

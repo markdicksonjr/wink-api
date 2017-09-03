@@ -3,7 +3,7 @@ import {ObjectTypeUtil} from "./object-type-util";
 
 export class ShareDevice {
 
-    public static get(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<WinkAPI.IUser[]> {
+    public static execute(params: WinkAPI.IObjectIdRequestParameters, email: string): Promise<WinkAPI.IUser[]> {
         return new Promise<WinkAPI.IUser[]>((resolve, reject) => {
             request.post({
                 url: params.host +

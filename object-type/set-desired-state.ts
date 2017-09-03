@@ -3,7 +3,7 @@ import {ObjectTypeUtil} from "./object-type-util";
 
 export class SetDesiredState {
 
-    public static set(params: WinkAPI.IObjectIdRequestParameters, state: any): Promise<void> {
+    public static execute(params: WinkAPI.IObjectIdRequestParameters, state: any): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             request.put({
                 url: params.host +

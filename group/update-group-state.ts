@@ -1,14 +1,17 @@
 import * as request from 'request';
 
-export class UpdateGroup {
+export class UpdateGroupState {
 
-    public static execute(params: WinkAPI.IGroupIdRequestParameters, properties: any): Promise<WinkAPI.IUserGroupResponse> {
+    public static execute(params: WinkAPI.IGroupIdRequestParameters, state: any): Promise<WinkAPI.IUserGroupResponse> {
         return new Promise<WinkAPI.IUserGroupResponse>((resolve, reject) => {
             request.post({
                 url: params.host +
                 '/groups' +
-                '/' + params.group_id,
-                json: properties,
+                '/' + params.group_id +
+                '/activate',
+                json: {
+                    desired_state: state
+                },
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
                 }

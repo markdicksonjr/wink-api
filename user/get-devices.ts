@@ -1,8 +1,8 @@
 import * as request from 'request';
 
-export class Devices {
+export class GetDevices {
 
-    public static list(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserDevicesResponse> {
+    public static execute(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserDevicesResponse> {
         return new Promise<WinkAPI.IUserDevicesResponse>((resolve, reject) => {
             request.get({
                 url: auth.host + '/users/me/wink_devices',
