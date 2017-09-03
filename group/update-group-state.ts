@@ -26,7 +26,7 @@ export class UpdateGroupState {
                 if(response.statusCode !== 200) {
                     return reject({
                         statusCode: response.statusCode,
-                        message: error.message || error.stack || error
+                        message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode
                     });
                 }
 
