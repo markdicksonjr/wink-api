@@ -25,6 +25,33 @@ declare module WinkAPI {
         data: IDevice;
     }
 
+    export interface IUserGroupsResponse extends IResponse {
+        data: IGroup[];
+    }
+
+    export interface IGroup {
+        group_id: string;
+        name: string;
+        order: number;
+        icon_id: string;
+        members: IGroupMember[];
+        reading_aggregation: any;
+        automation_mode: string;
+        hidden_at: number;
+        object_type: "group",
+        object_id: string;
+        icon_code: string;
+        subscription: ISubscriptionInfo;
+    }
+
+    export interface IGroupMember {
+        object_type: TObjectType;
+        object_id: string;
+        local_id: string;
+        hub_id: string;
+        blacklisted_readings: any[];
+    }
+
     export type TObjectType =
         "binary_switch" |
         "door_bell" |
@@ -37,6 +64,18 @@ declare module WinkAPI {
         "button" |
         "sensor_pod" |
         "shade" |
+        "camera" |
+        "eggtray" |
+        "cloud_clock" |
+        "powerstrip" |
+        "piggy_bank" |
+        "refrigerator" |
+        "propane_tank" |
+        "remote" |
+        "siren" |
+        "smoke_detector" |
+        "sprinkler" |
+        "water_heater" |
         string;
 
     export interface IDevice {
