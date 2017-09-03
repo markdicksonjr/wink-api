@@ -14,7 +14,11 @@ declare module WinkAPI {
 
     export interface IResponse {
         errors?: string[];
-        pagination?: any;
+        pagination?: IPagination;
+    }
+
+    export interface IPagination {
+        count: number;
     }
 
     export interface IUserDevicesResponse extends IResponse {
@@ -27,6 +31,10 @@ declare module WinkAPI {
 
     export interface IUserGroupsResponse extends IResponse {
         data: IGroup[];
+    }
+
+    export interface IUserGroupResponse extends IResponse {
+        data: IGroup;
     }
 
     export interface IGroup {
@@ -132,5 +140,9 @@ declare module WinkAPI {
     export interface IObjectIdRequestParameters extends IAuthenticatedRequestParameters {
         object_id: string;
         object_type: string;
+    }
+
+    export interface IGroupIdRequestParameters extends IAuthenticatedRequestParameters {
+        group_id: string;
     }
 }
