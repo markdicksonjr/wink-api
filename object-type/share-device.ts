@@ -18,11 +18,17 @@ export class ShareDevice {
                 }
             }, (error, response, body) => {
                 if(error) {
-                    return reject(error.message || error.stack || error);
+                    return reject({
+                        statusCode: response.statusCode,
+                        message: error.message || error.stack || error
+                    });
                 }
 
                 if(response.statusCode !== 200) {
-                    return reject('non-200 status code received: ' + response.statusCode);
+                    return reject({
+                        statusCode: response.statusCode,
+                        message: error.message || error.stack || error
+                    });
                 }
 
                 resolve(body);

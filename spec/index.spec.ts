@@ -1,8 +1,25 @@
-import {GetDevices, GetDevice, GetDeviceUsers, GetGroup, GetGroups, SetDesiredState, ShareDevice, UnshareDevice, UpdateGroup, UpdateGroupState} from "../index";
+import {
+    ActivateScene,
+    GetDevices,
+    GetDevice,
+    GetDeviceUsers,
+    GetGroup,
+    GetGroups,
+    GetRobots,
+    GetScene,
+    GetScenes,
+    SetDesiredState,
+    ShareDevice,
+    UnshareDevice,
+    UpdateGroup,
+    UpdateGroupState
+} from "../index";
 
 describe('Module index', () => {
 
     it('should expose the expected modules', () => {
+        expect(ActivateScene).not.toBeFalsy();
+        expect(ActivateScene.execute).not.toBeFalsy();
         expect(GetDevices).not.toBeFalsy();
         expect(GetDevices.execute).not.toBeFalsy();
         expect(SetDesiredState).not.toBeFalsy();
@@ -15,6 +32,12 @@ describe('Module index', () => {
         expect(GetGroup.execute).not.toBeFalsy();
         expect(GetGroups).not.toBeFalsy();
         expect(GetGroups.execute).not.toBeFalsy();
+        expect(GetRobots).not.toBeFalsy();
+        expect(GetRobots.execute).not.toBeFalsy();
+        expect(GetScene).not.toBeFalsy();
+        expect(GetScene.execute).not.toBeFalsy();
+        expect(GetScenes).not.toBeFalsy();
+        expect(GetScenes.execute).not.toBeFalsy();
         expect(ShareDevice).not.toBeFalsy();
         expect(ShareDevice.execute).not.toBeFalsy();
         expect(UnshareDevice).not.toBeFalsy();

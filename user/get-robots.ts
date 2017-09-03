@@ -1,27 +1,24 @@
 import * as request from 'request';
-import {RequestResponse} from "request";
 
-export class GetGroup {
+export class GetRobots {
 
-    public static execute(params: WinkAPI.IGroupIdRequestParameters): Promise<WinkAPI.IUserGroupResponse> {
-        return new Promise<WinkAPI.IUserGroupResponse>((resolve, reject) => {
+    public static execute(auth: WinkAPI.IAuthenticatedRequestParameters): Promise<WinkAPI.IUserRobotsResponse> {
+        return new Promise<WinkAPI.IUserRobotsResponse>((resolve, reject) => {
             request.get({
-                url: params.host +
-                '/groups' +
-                '/' + params.group_id,
+                url: auth.host + '/users/me/robots',
                 json: {},
                 headers: {
-                    Authorization: 'Bearer ' + params.access_token
+                    Authorization: 'Bearer ' + auth.access_token
                 }
-            }, (error: any, response: RequestResponse, body: any) => {
-                if(error) {
+            }, (error, response, body) => {
+                if (error) {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error
                     });
                 }
 
-                if(response.statusCode !== 200) {
+                if (response.statusCode !== 200) {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error

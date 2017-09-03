@@ -21,6 +21,11 @@ declare module WinkAPI {
         count: number;
     }
 
+    export interface IRequestError {
+        statusCode: number;
+        message: string;
+    }
+
     export interface IUserDevicesResponse extends IResponse {
         data: IDevice[];
     }
@@ -35,6 +40,18 @@ declare module WinkAPI {
 
     export interface IUserGroupResponse extends IResponse {
         data: IGroup;
+    }
+
+    export interface IUserScenesResponse extends IResponse {
+        data: IScene[];
+    }
+
+    export interface IUserSceneResponse extends IResponse {
+        data: IScene;
+    }
+
+    export interface IUserRobotsResponse extends IResponse {
+        data: IRobot[];
     }
 
     export interface IGroup {
@@ -58,6 +75,12 @@ declare module WinkAPI {
         local_id: string;
         hub_id: string;
         blacklisted_readings: any[];
+    }
+
+    export interface IScene {
+        scene_id: string;
+        name: string;
+        members: IGroupMember[];
     }
 
     export type TObjectType =
@@ -132,6 +155,17 @@ declare module WinkAPI {
         permissions: string[];
     }
 
+    export interface IRobot {
+        name: string;
+        creating_actor_type: "user" | string;
+        creating_actor_id: string;
+        automation_mode: string;
+        causes: any[]; // TODO: expand
+        restrictions: any[]; // TODO: expand
+        effects: any[]; // TODO: expand
+        last_reading: any; // TODO: expand
+    }
+
     export interface IAuthenticatedRequestParameters {
         host: "https://api.wink.com" | string;
         access_token: string
@@ -144,5 +178,9 @@ declare module WinkAPI {
 
     export interface IGroupIdRequestParameters extends IAuthenticatedRequestParameters {
         group_id: string;
+    }
+
+    export interface ISceneIdRequestParameters extends IAuthenticatedRequestParameters {
+        scene_id: string;
     }
 }

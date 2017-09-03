@@ -1,19 +1,19 @@
 import * as request from 'request';
-import {RequestResponse} from "request";
 
-export class GetGroup {
+export class ActivateScene {
 
-    public static execute(params: WinkAPI.IGroupIdRequestParameters): Promise<WinkAPI.IUserGroupResponse> {
-        return new Promise<WinkAPI.IUserGroupResponse>((resolve, reject) => {
-            request.get({
+    public static execute(params: WinkAPI.ISceneIdRequestParameters, properties: any): Promise<WinkAPI.IUserSceneResponse> {
+        return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
+            request.post({
                 url: params.host +
-                '/groups' +
-                '/' + params.group_id,
+                '/scenes' +
+                '/' + params.scene_id +
+                '/activate',
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
                 }
-            }, (error: any, response: RequestResponse, body: any) => {
+            }, (error, response, body) => {
                 if(error) {
                     return reject({
                         statusCode: response.statusCode,
