@@ -7,7 +7,7 @@ export class UnshareDevice {
         return new Promise<void>((resolve, reject) => {
             request.delete({
                 url: params.host +
-                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                '/' + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
                 '/' + params.object_id +
                 '/users' +
                 '/' + email,

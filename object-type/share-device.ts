@@ -7,7 +7,7 @@ export class ShareDevice {
         return new Promise<WinkAPI.IDeviceUser[]>((resolve, reject) => {
             request.post({
                 url: params.host +
-                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                '/' + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
                 '/' + params.object_id +
                 '/users',
                 json: {

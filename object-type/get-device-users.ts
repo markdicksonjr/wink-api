@@ -7,7 +7,7 @@ export class GetDeviceUsers {
         return new Promise<WinkAPI.IDeviceUser[]>((resolve, reject) => {
             request.get({
                 url: params.host +
-                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                '/' + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
                 '/' + params.object_id +
                 '/users',
                 json: {},

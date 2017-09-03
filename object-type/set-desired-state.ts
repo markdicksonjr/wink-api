@@ -7,7 +7,7 @@ export class SetDesiredState {
         return new Promise<void>((resolve, reject) => {
             request.put({
                 url: params.host +
-                '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                '/' + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
                 '/' + params.object_id +
                 '/desired_state',
                 json: {

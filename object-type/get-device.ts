@@ -7,7 +7,7 @@ export class GetDevice {
         return new Promise<WinkAPI.IDevice>((resolve, reject) => {
             request.get({
                 url: params.host +
-                    '/' + params.object_type + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
+                    '/' + ObjectTypeUtil.pluralizeObjectType(params.object_type) +
                     '/' + params.object_id,
                 json: {},
                 headers: {
