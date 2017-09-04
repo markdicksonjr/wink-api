@@ -1,15 +1,14 @@
 import * as request from 'request';
 
-export class ActivateScene {
+export class UpdateScene {
 
-    public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<WinkAPI.IUserSceneResponse> {
+    public static execute(params: WinkAPI.ISceneIdRequestParameters, scene: WinkAPI.IScene): Promise<WinkAPI.IUserSceneResponse> {
         return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
             request.post({
                 url: params.host +
                 '/scenes' +
-                '/' + params.scene_id +
-                '/activate',
-                json: {},
+                '/' + params.scene_id,
+                json: scene,
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
                 }

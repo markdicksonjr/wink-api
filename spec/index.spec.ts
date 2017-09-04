@@ -1,6 +1,10 @@
 import {
     ActivateScene,
+    CreateGroup,
+    CreateScene,
     CreateUser,
+    DeleteGroup,
+    DeleteScene,
     GetDevices,
     GetDevice,
     GetDeviceUsers,
@@ -14,6 +18,7 @@ import {
     UnshareDevice,
     UpdateGroup,
     UpdateGroupState,
+    UpdateScene,
     UpdateUser
 } from "../index";
 
@@ -22,8 +27,16 @@ describe('Module index', () => {
     it('should expose the expected modules', () => {
         expect(ActivateScene).not.toBeFalsy();
         expect(ActivateScene.execute).not.toBeFalsy();
+        expect(CreateGroup).not.toBeFalsy();
+        expect(CreateGroup.execute).not.toBeFalsy();
+        expect(CreateScene).not.toBeFalsy();
+        expect(CreateScene.execute).not.toBeFalsy();
         expect(CreateUser).not.toBeFalsy();
         expect(CreateUser.execute).not.toBeFalsy();
+        expect(DeleteGroup).not.toBeFalsy();
+        expect(DeleteGroup.execute).not.toBeFalsy();
+        expect(DeleteScene).not.toBeFalsy();
+        expect(DeleteScene.execute).not.toBeFalsy();
         expect(GetDevices).not.toBeFalsy();
         expect(GetDevices.execute).not.toBeFalsy();
         expect(SetDesiredState).not.toBeFalsy();
@@ -49,6 +62,8 @@ describe('Module index', () => {
         expect(UpdateGroup).not.toBeFalsy();
         expect(UpdateGroup.execute).not.toBeFalsy();
         expect(UpdateGroupState.execute).not.toBeFalsy();
+        expect(UpdateScene).not.toBeFalsy();
+        expect(UpdateScene.execute).not.toBeFalsy();
         expect(UpdateUser).not.toBeFalsy();
         expect(UpdateUser.execute).not.toBeFalsy();
     });

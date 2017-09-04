@@ -1,19 +1,19 @@
 import * as request from 'request';
+import {RequestResponse} from "request";
 
-export class ActivateScene {
+export class DeleteGroup {
 
-    public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<WinkAPI.IUserSceneResponse> {
-        return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
-            request.post({
+    public static execute(params: WinkAPI.IGroupIdRequestParameters): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            request.delete({
                 url: params.host +
-                '/scenes' +
-                '/' + params.scene_id +
-                '/activate',
+                '/groups' +
+                '/' + params.group_id,
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
                 }
-            }, (error, response, body) => {
+            }, (error: any, response: RequestResponse, body: any) => {
                 if(error) {
                     return reject({
                         statusCode: response.statusCode,
@@ -21,7 +21,7 @@ export class ActivateScene {
                     });
                 }
 
-                if(response.statusCode !== 200) {
+                if(response.statusCode !== 204) {
                     return reject({
                         statusCode: response.statusCode,
                         message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode

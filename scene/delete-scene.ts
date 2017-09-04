@@ -1,14 +1,13 @@
 import * as request from 'request';
 
-export class ActivateScene {
+export class DeleteScene {
 
-    public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<WinkAPI.IUserSceneResponse> {
-        return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
-            request.post({
+    public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            request.delete({
                 url: params.host +
                 '/scenes' +
-                '/' + params.scene_id +
-                '/activate',
+                '/' + params.scene_id,
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
@@ -21,7 +20,7 @@ export class ActivateScene {
                     });
                 }
 
-                if(response.statusCode !== 200) {
+                if(response.statusCode !== 204) {
                     return reject({
                         statusCode: response.statusCode,
                         message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode

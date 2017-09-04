@@ -1,27 +1,24 @@
 import * as request from 'request';
 
-export class ActivateScene {
+export class CreateScene {
 
-    public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<WinkAPI.IUserSceneResponse> {
-        return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
+    public static execute(auth: WinkAPI.IAuthenticatedRequestParameters, scene: WinkAPI.IScene): Promise<WinkAPI.IUserResponse> {
+        return new Promise<WinkAPI.IUserResponse>((resolve, reject) => {
             request.post({
-                url: params.host +
-                '/scenes' +
-                '/' + params.scene_id +
-                '/activate',
-                json: {},
+                url: auth.host + '/users/me/scenes',
+                json: scene,
                 headers: {
-                    Authorization: 'Bearer ' + params.access_token
+                    Authorization: 'Bearer ' + auth.access_token
                 }
             }, (error, response, body) => {
-                if(error) {
+                if (error) {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error
                     });
                 }
 
-                if(response.statusCode !== 200) {
+                if (response.statusCode !== 200) {
                     return reject({
                         statusCode: response.statusCode,
                         message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode
