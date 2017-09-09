@@ -201,6 +201,10 @@ declare module WinkAPI {
         scene_id: string;
     }
 
+    export interface IRobotIdRequestParameters extends IAuthenticatedRequestParameters {
+        robot_id: string;
+    }
+
     export interface ICreateUserRequestParameters extends IAuthenticatedRequestParameters {
         client_id: string;
         client_secret: string;

@@ -53,6 +53,7 @@ The following requests are supported via the wink-api module (each with "execute
 - GetDevices
 - GetGroup
 - GetGroups
+- GetRobot
 - GetRobots
 - GetScene
 - GetScenes
@@ -61,5 +62,6 @@ The following requests are supported via the wink-api module (each with "execute
 - UnshareDevice
 - UpdateGroup
 - UpdateGroupState
+- UpdateRobot
 - UpdateScene
 - UpdateUser
