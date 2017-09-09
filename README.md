@@ -1,5 +1,7 @@
 # Wink API
 
+A typescript/javascript binding for Wink's v2 API.
+
 ## Installation
 
 ```bash
@@ -34,3 +36,30 @@ GetDevices.execute({
     // error handling 
 });
 ```
+
+## Available Requests
+
+The following requests are supported via the wink-api module (each with "execute" as the method that queries):
+
+- ActivateScene
+- CreateGroup
+- CreateRobot
+- CreateScene
+- CreateUser
+- DeleteGroup
+- DeleteScene
+- GetDevice
+- GetDeviceUsers
+- GetDevices
+- GetGroup
+- GetGroups
+- GetRobots
+- GetScene
+- GetScenes
+- SetDesiredState
+- ShareDevice
+- UnshareDevice
+- UpdateGroup
+- UpdateGroupState
+- UpdateScene
+- UpdateUser

@@ -1,4 +1,5 @@
 export * from './create-group';
+export * from './create-robot';
 export * from './create-scene';
 export * from './create-user';
 export * from './get-devices';
