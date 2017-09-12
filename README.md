@@ -47,6 +47,7 @@ The following requests are supported via the wink-api module (each with "execute
 - CreateScene
 - CreateUser
 - DeleteGroup
+- DeleteRobot
 - DeleteScene
 - GetDevice
 - GetDeviceUsers
