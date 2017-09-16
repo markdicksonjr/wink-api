@@ -1,6 +1,12 @@
 # Wink API
 
-[![Build Status](https://travis-ci.org/markdicksonjr/wink-api.svg?branch=master)](https://travis-ci.org/markdicksonjr/wink-api)
+[![Build Status][travis-img]][travis-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+
+[travis-img]: https://travis-ci.org/markdicksonjr/wink-api.svg?branch=master
+[travis-url]: https://travis-ci.org/markdicksonjr/wink-api
+[downloads-image]: https://img.shields.io/npm/dm/wink-api.svg
+[downloads-url]: https://npmjs.org/package/wink-api
 
 A typescript/javascript binding for Wink's v2 API.
 
