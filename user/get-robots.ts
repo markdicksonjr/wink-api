@@ -1,4 +1,5 @@
 import * as request from 'request';
+import {ResponseUtil} from "../util/response";
 
 export class GetRobots {
 
@@ -11,18 +12,9 @@ export class GetRobots {
                     Authorization: 'Bearer ' + auth.access_token
                 }
             }, (error, response, body) => {
-                if (error) {
-                    return reject({
-                        statusCode: (response ? response.statusCode || 500 : 500),
-                        message: error.message || error.stack || error
-                    } as WinkAPI.IRequestError);
-                }
-
-                if (!response || response.statusCode !== 200) {
-                    return reject({
-                        statusCode: (response ? response.statusCode || 500 : 500),
-                        message: body && body.errors && body.errors[0] ? body.errors[0] : 'response code = ' + response.statusCode
-                    } as WinkAPI.IRequestError);
+                let responseCodeError: WinkAPI.IRequestError = ResponseUtil.getErrorFromResponse(200, error, response, body);
+                if (responseCodeError) {
+                    return reject(responseCodeError);
                 }
 
                 resolve(body);
