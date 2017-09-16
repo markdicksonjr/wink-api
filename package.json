@@ -1,6 +1,6 @@
 {
   "name": "wink-api",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "The Wink API connects Wink devices to users, apps, each other, and the wider web.  Targets the v2 API",
   "main": "index.js",
   "scripts": {

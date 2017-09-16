@@ -34,7 +34,7 @@ GetDevices.execute({
     access_token: access_token
 }).then((devices) => {
     // do something
-}).catch((err) => {
+}).catch((err: WinkAPI.IRequestError) => {
     // error handling 
 });
 ```

@@ -17,14 +17,14 @@ export class UpdateGroup {
                     return reject({
                         statusCode: response.statusCode,
                         message: error.message || error.stack || error
-                    });
+                    } as WinkAPI.IRequestError);
                 }
 
                 if(response.statusCode !== 200) {
                     return reject({
                         statusCode: response.statusCode,
                         message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode
-                    });
+                    } as WinkAPI.IRequestError);
                 }
 
                 resolve(body);
