@@ -1,5 +1,7 @@
 # Wink API
 
+[![Build Status](https://travis-ci.org/markdicksonjr/wink-api.svg?branch=master)](https://travis-ci.org/markdicksonjr/wink-api)
+
 A typescript/javascript binding for Wink's v2 API.
 
 ## Installation
