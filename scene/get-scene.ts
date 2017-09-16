@@ -6,7 +6,7 @@ export class GetScene {
     public static execute(params: WinkAPI.ISceneIdRequestParameters): Promise<WinkAPI.IUserSceneResponse> {
         return new Promise<WinkAPI.IUserSceneResponse>((resolve, reject) => {
             request.get({
-                url: params.host + '/users/me/scenes/' + params.scene_id,
+                url: params.host + '/scenes/' + params.scene_id,
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
