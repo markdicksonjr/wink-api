@@ -16,14 +16,14 @@ export class GetDevice {
             }, (error, response, body) => {
                 if(error) {
                     return reject({
-                        statusCode: response.statusCode,
+                        statusCode: (response ? response.statusCode || 500 : 500),
                         message: error.message || error.stack || error
                     } as WinkAPI.IRequestError);
                 }
 
-                if(response.statusCode !== 200) {
+                if(!response || response.statusCode !== 200) {
                     return reject({
-                        statusCode: response.statusCode,
+                        statusCode: (response ? response.statusCode || 500 : 500),
                         message: body && body.errors && body.errors[0] ? body.errors[0] : 'response code = ' + response.statusCode
                     } as WinkAPI.IRequestError);
                 }

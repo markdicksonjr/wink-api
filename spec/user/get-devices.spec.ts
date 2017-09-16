@@ -5,7 +5,7 @@ let MockRequestModule = {
     get: () => {}
 };
 
-let GetGroupModule = proxyquire('../../group/get-group', {
+let GetDevicesModule = proxyquire('../../user/get-devices', {
     "request": MockRequestModule
 });
 
@@ -18,15 +18,14 @@ describe('Get Group', () => {
             } as any, {});
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(404);
             expect(err.message).toEqual('string error');
             done();
@@ -42,15 +41,14 @@ describe('Get Group', () => {
             } as any, {});
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(404);
             expect(err.message).toEqual('error stack');
             done();
@@ -66,60 +64,15 @@ describe('Get Group', () => {
             } as any, {});
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(404);
-            expect(err.message).toEqual('error message');
-            done();
-        });
-    });
-
-    it('should handle an error response with no response and reject properly', (done) => {
-        let getSpy = spyOn(MockRequestModule, 'get').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
-            cb({
-                message: "error message"
-            }, null, {});
-        });
-
-        GetGroupModule.GetGroup.execute({
-            host: 'https://api.fake.wink.com',
-            group_id: '3456789',
-            access_token: 'JUNKTOKEN'
-        }).then(() => {
-            fail();
-            done();
-        }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
-            expect(err.statusCode).toEqual(500);
-            expect(err.message).toEqual('error message');
-            done();
-        });
-    });
-
-    it('should handle an error response with no status code and reject properly', (done) => {
-        let getSpy = spyOn(MockRequestModule, 'get').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
-            cb({
-                message: "error message"
-            }, {} as any, {});
-        });
-
-        GetGroupModule.GetGroup.execute({
-            host: 'https://api.fake.wink.com',
-            group_id: '3456789',
-            access_token: 'JUNKTOKEN'
-        }).then(() => {
-            fail();
-            done();
-        }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
-            expect(err.statusCode).toEqual(500);
             expect(err.message).toEqual('error message');
             done();
         });
@@ -134,15 +87,14 @@ describe('Get Group', () => {
             });
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(204);
             expect(err.message).toEqual('some error');
             done();
@@ -158,15 +110,14 @@ describe('Get Group', () => {
             });
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(204);
             expect(err.message).toEqual('response code = 204');
             done();
@@ -181,15 +132,14 @@ describe('Get Group', () => {
             });
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
             fail();
             done();
         }).catch((err: WinkAPI.IRequestError) => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             expect(err.statusCode).toEqual(204);
             expect(err.message).toEqual('response code = 204');
             done();
@@ -204,12 +154,11 @@ describe('Get Group', () => {
             });
         });
 
-        GetGroupModule.GetGroup.execute({
+        GetDevicesModule.GetDevices.execute({
             host: 'https://api.fake.wink.com',
-            group_id: '3456789',
             access_token: 'JUNKTOKEN'
         }).then(() => {
-            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/groups/3456789', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
+            expect(getSpy).toHaveBeenCalledWith({ url: 'https://api.fake.wink.com/users/me/wink_devices', json: {}, headers: { Authorization: 'Bearer JUNKTOKEN' } }, jasmine.any(Function));
             done();
         }).catch((err: WinkAPI.IRequestError) => {
             fail(err);
