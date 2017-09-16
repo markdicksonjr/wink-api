@@ -23,7 +23,7 @@ export class DeleteScene {
                 if(response.statusCode !== 204) {
                     return reject({
                         statusCode: response.statusCode,
-                        message: body && body.errors ? body.errors[0] : 'response code = ' + response.statusCode
+                        message: body && body.errors && body.errors[0] ? body.errors[0] : 'response code = ' + response.statusCode
                     } as WinkAPI.IRequestError);
                 }
 
