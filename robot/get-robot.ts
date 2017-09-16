@@ -6,7 +6,7 @@ export class GetRobot {
     public static execute(params: WinkAPI.IRobotIdRequestParameters): Promise<WinkAPI.IRobot> {
         return new Promise<WinkAPI.IRobot>((resolve, reject) => {
             request.get({
-                url: params.host + '/users/robots/' + params.robot_id,
+                url: params.host + '/robots/' + params.robot_id,
                 json: {},
                 headers: {
                     Authorization: 'Bearer ' + params.access_token
