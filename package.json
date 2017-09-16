@@ -1,11 +1,11 @@
 {
   "name": "wink-api",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "The Wink API connects Wink devices to users, apps, each other, and the wider web.  Targets the v2 API",
   "main": "index.js",
   "scripts": {
     "test": "tsc && jasmine",
-    "cover": "istanbul cover --include-all-sources -x **/*.spec.js node_modules/jasmine/bin/jasmine.js",
+    "cover": "istanbul cover -x '**/*.spec.js' --include-all-sources node_modules/jasmine/bin/jasmine.js",
     "postinstall": "tsc",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },

@@ -3,15 +3,15 @@ import {ResponseUtil} from "../util/response";
 
 export class UpdateUser {
 
-    public static execute(auth: WinkAPI.IUserRequestParameters): Promise<WinkAPI.IUserResponse> {
+    public static execute(params: WinkAPI.IUpdateUserRequestParameters): Promise<WinkAPI.IUserResponse> {
         return new Promise<WinkAPI.IUserResponse>((resolve, reject) => {
             request.put({
-                url: auth.host + '/users',
+                url: params.host + '/users/' + params.user_id,
                 json: {
-
+                    "email": params.email
                 },
                 headers: {
-                    Authorization: 'Bearer ' + auth.access_token
+                    Authorization: 'Bearer ' + params.access_token
                 }
             }, (error, response, body) => {
                 let responseCodeError: WinkAPI.IRequestError = ResponseUtil.getErrorFromResponse(200, error, response, body);

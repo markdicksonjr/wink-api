@@ -219,6 +219,10 @@ declare module WinkAPI {
         user_id: string;
     }
 
+    export interface IUpdateUserRequestParameters extends IUserRequestParameters {
+        email: string;
+    }
+
     export interface IError {
         statusCode: number;
         message: string;
