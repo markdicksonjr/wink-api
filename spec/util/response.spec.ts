@@ -38,5 +38,35 @@ describe('Response Util', () => {
         expect(getErrorIfStatusCodeIncorrectSpy).toHaveBeenCalled();
     });
 
-    // TODO getErrorIfStatusCodeIncorrect results
+    it('should return null in getErrorIfStatusCodeIncorrect when staus codes match', () => {
+        let error = ResponseUtil.getErrorIfStatusCodeIncorrect(301, {
+            statusCode: 301
+        } as any, null);
+        expect(error).toBeNull();
+    });
+
+    it('should return a 500 status code in getErrorIfStatusCodeIncorrect if a null response is passed', () => {
+        let error = ResponseUtil.getErrorIfStatusCodeIncorrect(301, null, null);
+        expect(error.statusCode).toEqual(500);
+        expect(error.message).toEqual("response code = 500");
+    });
+
+    it('should return a 500 status code in getErrorIfStatusCodeIncorrect if a null status code is passed', () => {
+        let error = ResponseUtil.getErrorIfStatusCodeIncorrect(301, {
+
+        } as any, {
+            errors: ["err1"]
+        });
+        expect(error.statusCode).toEqual(500);
+        expect(error.message).toEqual("err1");
+    });
+
+    it('should handle a missing response code and no errors in the body when status codes do not match in getErrorIfStatusCodeIncorrect', () => {
+        let error = ResponseUtil.getErrorIfStatusCodeIncorrect(301, {
+
+        } as any, {
+        });
+        expect(error.statusCode).toEqual(500);
+        expect(error.message).toEqual("response code = 500");
+    });
 });
