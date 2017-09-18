@@ -5,7 +5,7 @@ export class UpdateGroup {
 
     public static execute(params: WinkAPI.IGroupIdRequestParameters, properties: any): Promise<WinkAPI.IUserGroupResponse> {
         return new Promise<WinkAPI.IUserGroupResponse>((resolve, reject) => {
-            request.post({
+            request.put({
                 url: params.host +
                 '/groups' +
                 '/' + params.group_id,

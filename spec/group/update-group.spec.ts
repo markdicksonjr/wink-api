@@ -2,7 +2,7 @@ import {RequestResponse} from "request";
 let proxyquire = require('proxyquire');
 
 let MockRequestModule = {
-    post: () => {}
+    put: () => {}
 };
 
 let MockResponseUtilModule = {
@@ -24,7 +24,7 @@ describe('Update Group', () => {
             message: 'string error'
         });
 
-        let updateSpy = spyOn(MockRequestModule, 'post').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
+        let updateSpy = spyOn(MockRequestModule, 'put').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
             cb("string error", {
                 statusCode: 404
             } as any, {});
@@ -51,7 +51,7 @@ describe('Update Group', () => {
     it('should handle a 200 status code properly', (done) => {
         let getErrorFromResponseSpy = spyOn(MockResponseUtilModule.ResponseUtil, 'getErrorFromResponse').and.returnValue(null);
 
-        let updateSpy = spyOn(MockRequestModule, 'post').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
+        let updateSpy = spyOn(MockRequestModule, 'put').and.callFake((params: any, cb: (error: any, response: RequestResponse, body: any) => void) => {
             cb(null, {
                 statusCode: 200
             } as any, {
