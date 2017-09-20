@@ -65,7 +65,7 @@ declare module WinkAPI {
         order: number;
         icon_id: string;
         members: IGroupMember[];
-        reading_aggregation: any;
+        reading_aggregation: IReadingAggregation;
         automation_mode: string;
         hidden_at: number;
         object_type: "group",
@@ -181,6 +181,32 @@ declare module WinkAPI {
         units: any, // TODO: expand
         tos_accepted: boolean;
         confirmed: boolean;
+    }
+
+    export interface IReadingAggregation {
+        brightness: IAggregatedValue;
+        connection: IAggregatedValue;
+        firmware_date_code: IAggregatedMode;
+        firmware_version: IAggregatedMode;
+        powered: IAggregatedValue;
+        powering_mode: IAggregatedMode;
+    }
+
+    export interface IAggregatedValue {
+        and: boolean;
+        changed_at: number;
+        false_count: number;
+        or: boolean;
+        true_count: number;
+        updated_at: number;
+    }
+
+    export interface IAggregatedMode {
+        changed_at: number;
+        mode: string;
+        mode_count: number;
+        other_count: number;
+        updated_at: number;
     }
 
     export interface IAuthenticatedRequestParameters {
