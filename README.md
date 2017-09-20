@@ -41,7 +41,7 @@ import {GetDevices} from "wink-api";
 GetDevices.execute({
     host: 'https://api.wink.com',
     access_token: access_token
-}).then((devices) => {
+}).then((devicesResponse: WinkAPI.IUserDevicesResponse) => {
     // do something
 }).catch((err: WinkAPI.IRequestError) => {
     // error handling 
@@ -77,3 +77,23 @@ The following requests are supported via the wink-api module (each with "execute
 - UpdateRobot
 - UpdateScene
 - UpdateUser
+
+## Interesting use-cases
+
+Turning off a group of lights:
+
+```typescript
+import {UpdateGroupState} from "wink-api";
+
+UpdateGroupState.execute({
+    host: 'https://api.wink.com',
+    access_token: '<access_token>',
+    group_id: '<group id>'
+}, {
+    powered: false
+}).then((groupResponse: WinkAPI.IUserGroupResponse) => {
+    // do something
+}).catch((err: WinkAPI.IRequestError) => {
+      // error handling 
+});
+```
