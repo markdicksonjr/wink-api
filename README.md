@@ -80,7 +80,7 @@ The following requests are supported via the wink-api module (each with "execute
 
 ## Interesting use-cases
 
-Turning off a group of lights:
+Turning off a group of devices:
 
 ```typescript
 import {UpdateGroupState} from "wink-api";
@@ -95,5 +95,38 @@ UpdateGroupState.execute({
     // do something
 }).catch((err: WinkAPI.IRequestError) => {
       // error handling 
+});
+```
+
+Toggling power for a group of devices:
+
+```typescript
+import {GetGroup, UpdateGroupState} from "wink-api";
+
+GetGroup.execute({
+    host: 'https://api.wink.com',
+    access_token: '<access_token>',
+    group_id: '<group id>'
+}).then((group) => {
+    
+    let allOn: boolean = false;
+    if(group && group.data && group.data.reading_aggregation) {
+        let aggregation: any = group.data.reading_aggregation;
+        allOn = (aggregation.powered && aggregation.connection && aggregation.powered.true_count === aggregation.connection.true_count);
+    }
+
+    UpdateGroupState.execute({
+        host: 'https://api.wink.com',
+        access_token: '<access_token>',
+        group_id: '<group id>'
+    }, {
+        powered: !allOn
+    }).then((groupResponse: WinkAPI.IUserGroupResponse) => {
+        // TODO: handle group response
+    }).catch((err: WinkAPI.IRequestError) => {
+        // TODO: handle error
+    });
+}).catch((err: WinkAPI.IRequestError) => {
+    // TODO: handle error
 });
 ```
